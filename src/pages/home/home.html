@@ -1,14 +1,18 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-navbar>
+ 
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-content style="background-color:#222427" padding>
+  <ion-list>
+      <ion-item style="background-color:transparent;">
+        <ion-input style="color:white" [(ngModel)]="name" name="name" placeholder="AddItem..."></ion-input>
+      </ion-item>
+  </ion-list>
+  <button style="background-color:#ffcc00;color: #222427;" ion-button color="primary"  (click)="addTodo()">Add</button>
+  <ion-list  *ngFor="let todo of todos | async">
+    <ion-item  style="background-color:transparent;color:white;">
+      <strong>{{todo.data.name}}</strong> <ion-icon ios="ios-trash" md="md-trash" (click)="deleteTodo(todo.id)"></ion-icon>
+    </ion-item>
+  </ion-list>
+
 </ion-content>
